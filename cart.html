@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلة المشتريات - بوبا كافيه</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">بوبا <span>كافيه.</span></a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="menu.html">المنيو</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <button class="icon-btn" id="theme-toggle" aria-label="تبديل المظهر">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="cart.html" class="icon-btn" style="color: var(--primary-color);" aria-label="السلة">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="cart-badge">0</span>
+                </a>
+                <button class="icon-btn mobile-menu-btn" id="mobile-menu-btn" aria-label="القائمة">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>سلة المشتريات</h2>
+        </div>
+    </section>
+
+    <!-- Cart Content -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container cart-container">
+            <!-- Items List -->
+            <div class="cart-items" id="cart-items-container">
+                <!-- Injected via JS -->
+                <div class="empty-state" id="empty-cart-msg">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <h3>السلة فارغة حالياً</h3>
+                    <p style="color: var(--text-light); margin: 1rem 0 2rem;">تصفح المنيو وأضف مشروباتك المفضلة.</p>
+                    <a href="menu.html" class="btn btn-primary">تصفح المنيو</a>
+                </div>
+            </div>
+
+            <!-- Summary Sidebar -->
+            <div class="cart-summary" id="cart-summary-box" style="display: none;">
+                <h3 style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">ملخص الطلب</h3>
+                
+                <div class="summary-row">
+                    <span style="color: var(--text-light);">عدد المنتجات</span>
+                    <span id="summary-count">0</span>
+                </div>
+                
+                <div class="summary-total">
+                    <span>الإجمالي</span>
+                    <span id="summary-total-price">$0.00</span>
+                </div>
+
+                <button class="btn btn-whatsapp" id="whatsapp-order-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    اطلب عبر واتساب
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

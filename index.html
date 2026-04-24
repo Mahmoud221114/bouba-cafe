@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوبا كافيه - أفضل مشروبات بوبا في أسيوط</title>
+    <meta name="description" content="استمتع بأفضل مشروبات بوبا، القهوة المثلجة والحلويات في أسيوط.">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">بوبا <span>كافيه.</span></a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" style="color: var(--primary-color);">الرئيسية</a></li>
+                <li><a href="menu.html">المنيو</a></li>
+                <li><a href="#about">من نحن</a></li>
+                <li><a href="#gallery">معرض الصور</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <button class="icon-btn" id="theme-toggle" aria-label="تبديل المظهر">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="cart.html" class="icon-btn" aria-label="السلة">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="cart-badge">0</span>
+                </a>
+                <button class="icon-btn mobile-menu-btn" id="mobile-menu-btn" aria-label="القائمة">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>أفضل مشروبات بوبا في <span style="color: var(--primary-color);">أسيوط 🔥</span></h1>
+                <p>عيش أجواء الصيف مع تشكيلة واسعة من مشروبات البوبا الأصلية، القهوة المثلجة، والحلويات الطازجة. مكانك المفضل الجديد هنا.</p>
+                <div class="hero-btns">
+                    <a href="menu.html" class="btn btn-primary">شوف المنيو</a>
+                    <a href="#about" class="btn btn-outline">قصتنا</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="blob"></div>
+                <!-- Using the same images from before -->
+                <img src="assets/images/hero.png" alt="كافيه بوبا من الداخل">
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="section" id="featured">
+        <div class="container">
+            <h2>مشروبات مميزة</h2>
+            <div class="featured-grid">
+                <!-- Card 1 -->
+                <div class="drink-card fade-in">
+                    <div class="drink-img-wrap">
+                        <img src="assets/images/boba.png" alt="بوبا السكر البني">
+                    </div>
+                    <h3 class="drink-name">بوبا السكر البني</h3>
+                    <div class="drink-price">$5.50</div>
+                    <a href="menu.html" class="btn btn-outline" style="width: 100%;">اطلب الآن</a>
+                </div>
+                <!-- Card 2 -->
+                <div class="drink-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="drink-img-wrap">
+                        <img src="assets/images/coffee.png" alt="لاتيه فانيليا مثلج">
+                    </div>
+                    <h3 class="drink-name">لاتيه فانيليا مثلج</h3>
+                    <div class="drink-price">$4.80</div>
+                    <a href="menu.html" class="btn btn-outline" style="width: 100%;">اطلب الآن</a>
+                </div>
+                <!-- Card 3 -->
+                <div class="drink-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="drink-img-wrap">
+                        <img src="assets/images/hero.png" alt="ماتشا فلوت">
+                    </div>
+                    <h3 class="drink-name">ماتشا فلوت</h3>
+                    <div class="drink-price">$6.00</div>
+                    <a href="menu.html" class="btn btn-outline" style="width: 100%;">اطلب الآن</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about" style="background-color: var(--card-bg);">
+        <div class="container about-grid">
+            <div class="about-image fade-in">
+                <img src="assets/images/hero.png" alt="عن بوبا كافيه" style="border-radius: 20px; box-shadow: var(--shadow);">
+            </div>
+            <div class="about-text fade-in" style="animation-delay: 0.2s;">
+                <h2>مصنوع بشغف</h2>
+                <p>في بوبا كافيه، نؤمن بقوة المشروب المثالي. سواء كنت تشتهي متعة مضغ حبات البوبا الأصلية أو المذاق الغني والقوي للقهوة الطازجة، لدينا ما تبحث عنه.</p>
+                <p>مكوناتنا مستوردة عالمياً ولكنها تُحضر محلياً لنقدم لك نكهات طازجة وحيوية قدر الإمكان. تعال من أجل المشروبات، وابقَ من أجل الأجواء.</p>
+                
+                <div class="about-features">
+                    <div class="feature">
+                        <i class="fa-solid fa-leaf"></i>
+                        <span>مكونات ممتازة</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fa-solid fa-mug-hot"></i>
+                        <span>قهوة طازجة</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fa-solid fa-wifi"></i>
+                        <span>واي فاي مجاني</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fa-solid fa-face-smile"></i>
+                        <span>أجواء رائعة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section Placeholder -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <h2>معرض الصور</h2>
+            <div class="featured-grid">
+                <div class="drink-img-wrap" style="margin: 0;"><img src="assets/images/hero.png" alt="صورة 1"></div>
+                <div class="drink-img-wrap" style="margin: 0;"><img src="assets/images/boba.png" alt="صورة 2"></div>
+                <div class="drink-img-wrap" style="margin: 0;"><img src="assets/images/coffee.png" alt="صورة 3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Placeholder -->
+    <section class="section" id="testimonials" style="background-color: var(--card-bg);">
+        <div class="container">
+            <h2>آراء العملاء</h2>
+            <div class="featured-grid">
+                <div class="drink-card">
+                    <div style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p style="margin-bottom: 1rem; color: var(--text-light);">"أفضل بوبا جربتها في حياتي! المكان نظيف جداً والخدمة سريعة وممتازة."</p>
+                    <h4>- أحمد محمود</h4>
+                </div>
+                <div class="drink-card">
+                    <div style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                    <p style="margin-bottom: 1rem; color: var(--text-light);">"القهوة الباردة عندهم اختراع. الأجواء رائعة للمذاكرة أو الشغل."</p>
+                    <h4>- سارة علي</h4>
+                </div>
+                <div class="drink-card">
+                    <div style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p style="margin-bottom: 1rem; color: var(--text-light);">"طاقم العمل ودود للغاية والحلويات طازجة دائماً. أنصح به بشدة!"</p>
+                    <h4>- محمد خالد</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact & Map Placeholder -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="logo">بوبا <span>كافيه.</span></h3>
+                    <p>استمتع، استرخِ، وعيش التجربة الحديثة للكافيه.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html" style="color: var(--text-light); margin-bottom: 0.5rem; display: block;">الرئيسية</a></li>
+                        <li><a href="menu.html" style="color: var(--text-light); margin-bottom: 0.5rem; display: block;">المنيو</a></li>
+                        <li><a href="qr.html" style="color: var(--text-light); margin-bottom: 0.5rem; display: block;">مسح الـ QR</a></li>
+                        <li><a href="admin.html" style="color: var(--text-light); margin-bottom: 0.5rem; display: block;">لوحة الإدارة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fa-solid fa-location-dot" style="margin-left: 10px; color: var(--primary-color);"></i> شارع الجمهورية، أسيوط</p>
+                    <p><i class="fa-solid fa-clock" style="margin-left: 10px; color: var(--primary-color);"></i> السبت-الخميس: 9 ص - 11 م</p>
+                    <p><i class="fa-solid fa-envelope" style="margin-left: 10px; color: var(--primary-color);"></i> hello@boubacafe.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 بوبا كافيه. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
