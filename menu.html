@@ -51,9 +51,14 @@
                 </div>
                 <div class="filter-btns" id="filter-container">
                     <button class="filter-btn active" data-filter="all">الكل</button>
-                    <button class="filter-btn" data-filter="boba">مشروبات بوبا</button>
-                    <button class="filter-btn" data-filter="coffee">قهوة مثلجة</button>
-                    <button class="filter-btn" data-filter="dessert">حلويات</button>
+                    <button class="filter-btn" data-filter="mojito">موهيتو</button>
+                    <button class="filter-btn" data-filter="smoothie">سموثي</button>
+                    <button class="filter-btn" data-filter="icetea">آيس تي</button>
+                    <button class="filter-btn" data-filter="bobamix">بوبا ميكس</button>
+                    <button class="filter-btn" data-filter="milkshake">ميلك شيك</button>
+                    <button class="filter-btn" data-filter="icecoffee">آيس كوفي</button>
+                    <button class="filter-btn" data-filter="frappe">فرابيه</button>
+                    <button class="filter-btn" data-filter="matcha">ماتشا</button>
                 </div>
             </div>
         </div>
@@ -65,6 +70,17 @@
             <div class="featured-grid" id="menu-container">
                 <!-- يتم تحميل المنتجات هنا عبر الجافاسكريبت -->
                 <p style="text-align: center; grid-column: 1/-1;">جاري تحميل المنيو...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Code Section -->
+    <section class="section" id="qr-section" style="background-color: var(--card-bg); text-align: center; margin-bottom: 3rem; border-radius: 20px; box-shadow: var(--shadow);">
+        <div class="container">
+            <h2 style="margin-bottom: 1rem;">شارك المنيو بسهولة</h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem; font-size: 1.1rem;">امسح الرمز السريع (QR Code) لمشاركة منيو كافيه بوبا مع أصدقائك.</p>
+            <div style="background: white; display: inline-block; padding: 1.5rem; border-radius: 20px; box-shadow: var(--shadow-hover);">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://boubacafe.com/menu" alt="QR Code" style="width: 200px; height: 200px;">
             </div>
         </div>
     </section>

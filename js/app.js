@@ -2,23 +2,29 @@
 let menuItems = [];
 
 const defaultMenuItems = [
-    { id: 1, name: "بوبا السكر البني", category: "boba", price: 5.50, image: "assets/images/boba.png", description: "شاي الحليب الكلاسيكي مع شراب السكر البني اللذيذ وحبات التابيوكا المميزة.", onSale: false, discount: 0 },
-    { id: 2, name: "ماتشا فلوت", category: "boba", price: 6.00, image: "assets/images/hero.png", description: "شاي الماتشا الأخضر الفاخر مغطى بآيس كريم الفانيليا.", onSale: false, discount: 0 },
-    { id: 3, name: "تارو ميلك تي", category: "boba", price: 5.00, image: "assets/images/boba.png", description: "جذور التارو الكريمية والحلوة ممزوجة في شاي حليب منعش.", onSale: false, discount: 0 },
-    { id: 4, name: "لاتيه فانيليا مثلج", category: "coffee", price: 4.80, image: "assets/images/coffee.png", description: "إسبريسو سلس يصب فوق الثلج وشراب الفانيليا الحلو مع الحليب.", onSale: false, discount: 0 },
-    { id: 5, name: "كولد برو", category: "coffee", price: 4.50, image: "assets/images/coffee.png", description: "قهوة كولد برو منقوعة ببطء لنكهة قوية وسلسة بدون مرارة.", onSale: false, discount: 0 },
-    { id: 6, name: "موكا فرابوتشينو", category: "coffee", price: 5.50, image: "assets/images/coffee.png", description: "إسبريسو غني ممزوج مع الثلج، الحليب، وشراب الشوكولاتة.", onSale: false, discount: 0 },
-    { id: 7, name: "تشيز كيك الفراولة", category: "dessert", price: 6.50, image: "assets/images/hero.png", description: "تشيز كيك نيويورك الكريمي مغطى بقطع الفراولة الطازجة.", onSale: false, discount: 0 },
-    { id: 8, name: "كريب الماتشا", category: "dessert", price: 7.00, image: "assets/images/hero.png", description: "طبقات من الكريب الرقيق تفصل بينها كريمة الماتشا الخفيفة.", onSale: false, discount: 0 }
+    { id: 1, name: "موهيتو الليمون",        category: "mojito",    price: 45,  image: "assets/images/mojito_lemon.jpg",          description: "موهيتو منعش بالليمون والنعناع الطازج.",              onSale: false, discount: 0, inStock: true },
+    { id: 2, name: "سموثي مانجو",            category: "smoothie",  price: 55,  image: "assets/images/mango_smoothie.jpg",         description: "سموثي المانجو الطازج بنكهة استوائية رائعة.",         onSale: false, discount: 0, inStock: true },
+    { id: 3, name: "آيس تي باشن فروت",       category: "icetea",    price: 45,  image: "assets/images/passion_fruit_icetea.jpg",   description: "شاي مثلج بنكهة الباشن فروت المنعشة.",               onSale: false, discount: 0, inStock: true },
+    { id: 4, name: "بوبا فراولة ماتشا",      category: "bobamix",   price: 65,  image: "assets/images/strawberry_matcha.jpg",      description: "مزيج رائع من الفراولة والماتشا مع حبات البوبا.",    onSale: false, discount: 0, inStock: true },
+    { id: 5, name: "ميلك شيك شوكولاتة",      category: "milkshake", price: 60,  image: "assets/images/coffee.png",                 description: "ميلك شيك غني بالشوكولاتة والكريمة.",               onSale: false, discount: 0, inStock: true },
+    { id: 6, name: "آيس لاتيه فانيليا",      category: "icecoffee", price: 55,  image: "assets/images/coffee.png",                 description: "إسبريسو مع الثلج وشراب الفانيليا الحلو.",          onSale: false, discount: 0, inStock: true },
+    { id: 7, name: "فرابيه كراميل",           category: "frappe",    price: 65,  image: "assets/images/caramel_frappe.jpg",         description: "فرابيه الكراميل الغني مع حبات البوبا.",            onSale: false, discount: 0, inStock: true },
+    { id: 8, name: "ماتشا فلوت",              category: "matcha",    price: 60,  image: "assets/images/strawberry_matcha.jpg",      description: "شاي الماتشا الأخضر الفاخر مغطى بآيس كريم.",       onSale: false, discount: 0, inStock: true }
 ];
 
+const DATA_VERSION = 'v2'; // غيّر هذا لإعادة ضبط البيانات
+
 function initMenuData() {
+    const savedVersion = localStorage.getItem('bouba_data_version');
     const stored = localStorage.getItem('bouba_menuItems_ar');
-    if (stored) {
-        menuItems = JSON.parse(stored);
-    } else {
+
+    // إذا تغيّر الإصدار أو لا توجد بيانات، أعد الضبط
+    if (!stored || savedVersion !== DATA_VERSION) {
         menuItems = [...defaultMenuItems];
         localStorage.setItem('bouba_menuItems_ar', JSON.stringify(menuItems));
+        localStorage.setItem('bouba_data_version', DATA_VERSION);
+    } else {
+        menuItems = JSON.parse(stored);
     }
 }
 
@@ -109,6 +115,24 @@ function showToast(message, iconClass = 'fa-check-circle', color = 'var(--primar
     }, 3000);
 }
 
+// --- Scroll Animations Observer ---
+let scrollObserver;
+function initScrollObserver() {
+    scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { root: null, rootMargin: '0px', threshold: 0.15 });
+}
+
+function observeElements(elements) {
+    if(!scrollObserver) return;
+    elements.forEach(el => scrollObserver.observe(el));
+}
+
 // --- Menu Rendering & Filtering ---
 function renderMenu(items) {
     if (!menuContainer) return;
@@ -121,23 +145,34 @@ function renderMenu(items) {
     }
 
     items.forEach(item => {
+        const isOut = item.inStock === false;
+        const cardClass = isOut ? 'drink-card fade-in out-of-stock' : 'drink-card fade-in';
         const card = document.createElement('div');
-        card.className = 'drink-card fade-in';
+        card.className = cardClass;
         
         let priceHTML = '';
         let finalPrice = Number(item.price);
         let badgeHTML = '';
 
-        if (item.onSale && item.discount > 0) {
+        if (isOut) {
+            badgeHTML = `<div class="out-of-stock-badge">نفذت الكمية</div>`;
+            priceHTML = `<span>${Number(item.price).toFixed(0)} جنيه</span>`;
+        } else if (item.onSale && item.discount > 0) {
             finalPrice = item.price - (item.price * (item.discount / 100));
             badgeHTML = `<div class="sale-badge">عرض 🔥 -${item.discount}%</div>`;
             priceHTML = `
-                <span class="old-price">$${Number(item.price).toFixed(2)}</span>
-                <span style="color: #EF4444;">$${finalPrice.toFixed(2)}</span>
+                <span class="old-price">${Number(item.price).toFixed(0)} جنيه</span>
+                <span style="color: #EF4444;">${finalPrice.toFixed(0)} جنيه</span>
             `;
         } else {
-            priceHTML = `<span>$${Number(item.price).toFixed(2)}</span>`;
+            priceHTML = `<span>${Number(item.price).toFixed(0)} جنيه</span>`;
         }
+
+        const btnHTML = isOut 
+            ? `<button class="add-to-cart-btn" disabled style="background:#ccc; cursor:not-allowed;">غير متاح</button>`
+            : `<button class="add-to-cart-btn" onclick="addToCart(${item.id})">
+                <i class="fa-solid fa-plus"></i> أضف للسلة
+               </button>`;
 
         card.innerHTML = `
             ${badgeHTML}
@@ -147,12 +182,16 @@ function renderMenu(items) {
             <h3 class="drink-name">${item.name}</h3>
             <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; height: 40px; overflow: hidden;">${item.description}</p>
             <div class="drink-price">${priceHTML}</div>
-            <button class="add-to-cart-btn" onclick="addToCart(${item.id})">
-                <i class="fa-solid fa-plus"></i> أضف للسلة
-            </button>
+            ${btnHTML}
         `;
         menuContainer.appendChild(card);
     });
+    
+    // Observe newly rendered cards
+    if (scrollObserver) {
+        const newCards = menuContainer.querySelectorAll('.fade-in:not(.in-view)');
+        observeElements(newCards);
+    }
 }
 
 function initFilters() {
@@ -197,6 +236,10 @@ function filterMenu(category, searchTerm) {
 window.addToCart = function(itemId) {
     const item = menuItems.find(i => i.id == itemId);
     if (!item) return;
+    if (item.inStock === false) {
+        showToast("عفواً، هذا المنتج غير متاح حالياً", 'fa-times-circle', '#EF4444');
+        return;
+    }
 
     let finalPrice = Number(item.price);
     if (item.onSale && item.discount > 0) {
@@ -288,7 +331,7 @@ function renderCartPage() {
                 <img src="${item.image}" alt="${item.name}">
                 <div class="item-details">
                     <h3>${item.name}</h3>
-                    <div class="item-price">$${item.price.toFixed(2)}</div>
+                    <div class="item-price">${item.price.toFixed(0)} جنيه</div>
                     <div class="quantity-controls">
                         <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)"><i class="fa-solid fa-plus"></i></button>
                         <span style="font-weight: bold; font-size: 1.2rem;">${item.quantity}</span>
@@ -303,7 +346,13 @@ function renderCartPage() {
         });
 
         summaryCount.textContent = count;
-        summaryTotalPrice.textContent = `$${total.toFixed(2)}`;
+        summaryTotalPrice.textContent = `${total.toFixed(0)} جنيه`;
+        
+        // Observe newly rendered cart items
+        if (scrollObserver) {
+            const newCartItems = cartItemsContainer.querySelectorAll('.fade-in:not(.in-view)');
+            observeElements(newCartItems);
+        }
     }
 }
 
@@ -318,11 +367,11 @@ function initWhatsAppOrder() {
         let total = 0;
 
         cart.forEach(item => {
-            message += `▪️ ${item.name} (الكمية: ${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}%0A`;
+            message += `▪️ ${item.name} (الكمية: ${item.quantity}) - ${(item.price * item.quantity).toFixed(0)} جنيه%0A`;
             total += item.price * item.quantity;
         });
 
-        message += `%0A💰 *الإجمالي: $${total.toFixed(2)}*%0A%0A`;
+        message += `%0A💰 *الإجمالي: ${total.toFixed(0)} جنيه*%0A%0A`;
         message += "شكراً لكم! في انتظار تأكيد الطلب.";
 
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
@@ -338,6 +387,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initMenuData();
     updateCartBadges();
+    
+    initScrollObserver();
+    
+    // Observe statically placed fade-in elements
+    const staticFadeElements = document.querySelectorAll('.fade-in');
+    observeElements(staticFadeElements);
     
     // Menu Page
     if (menuContainer) {

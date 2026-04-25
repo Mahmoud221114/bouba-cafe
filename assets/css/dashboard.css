@@ -105,15 +105,26 @@ body.admin-mode {
   gap: 1rem;
   padding: 1rem 2rem;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   color: var(--text-light);
-  font-weight: 500;
+  font-weight: 600;
+  position: relative;
 }
 
 .menu-item:hover, .menu-item.active {
-  background-color: rgba(255, 154, 158, 0.1);
-  color: var(--primary-color);
-  border-right: 3px solid var(--primary-color);
+  background-color: rgba(250, 204, 21, 0.1); /* Primary color light */
+  color: var(--text-color);
+}
+
+.menu-item.active::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: var(--primary-color);
+  border-radius: 4px 0 0 4px;
 }
 
 .logout-btn {
@@ -170,10 +181,11 @@ body.dark-theme .logout-btn:hover {
 /* Add/Edit Form */
 .admin-form {
   background-color: var(--card-bg);
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 20px;
   max-width: 600px;
   box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
 }
 
 .alert {
@@ -198,25 +210,38 @@ body.dark-theme .alert.success {
 .table-container {
   background-color: var(--card-bg);
   border-radius: 20px;
-  padding: 1rem;
+  padding: 1.5rem;
   box-shadow: var(--shadow);
   overflow-x: auto;
+  border: 1px solid var(--border-color);
 }
 
 .admin-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .admin-table th, .admin-table td {
-  padding: 1rem;
-  text-align: left;
+  padding: 1.2rem 1rem;
+  text-align: right;
   border-bottom: 1px solid var(--border-color);
 }
 
+.admin-table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.admin-table tbody tr:hover {
+  background-color: rgba(250, 204, 21, 0.03);
+}
+
 .admin-table th {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-light);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
 }
 
 .admin-table img {
